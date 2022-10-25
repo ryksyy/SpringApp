@@ -19,6 +19,7 @@ public class StudentService {
     //read possible students first to not accidentally overwrite students.txt if adding a student before getting
     //then add new student to memory and write the whole student list, including from  file to the file again
     public void addStudent(Student sData){
+        getStudents();
         students = fService.readStudents();
         students.add(sData);
         fService.writeStudents(students);
@@ -34,6 +35,7 @@ public class StudentService {
     }
 
     public Student getStudentById(String id){    
+        getStudents();
             for (Student student : students) {
                 if(student.getStudentId().equals(id)){
                     return student;
@@ -42,16 +44,17 @@ public class StudentService {
         return null;     
     }
 
-    public Student enrollStudent(String studentId, String courseId){
-        for (Student student : students) {
-            if(student.getStudentId().equals(studentId)){
-                student.addCourse(courseId);
+    public String enrollStudent(String studentId, String courseId){
+        getStudents();
+        for(int i = 0; i < students.size(); i++){
+            if(students.get(i).getStudentId().equals(studentId)){
+                students.get(i).addCourse(courseId);
+                fService.writeStudents(students);
+                return "Successfully enrolled student to course";
             }
         }
 
-
-
-        return new Student(courseId, 0, 0);
+        return "No such student (issue in service)";
     }
 
 }

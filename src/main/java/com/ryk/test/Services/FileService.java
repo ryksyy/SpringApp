@@ -77,6 +77,30 @@ public class FileService {
         }
     }
 
+    //Method for parsing "list" gotten from students that holds courses
+    //couldnt find a simple way to convert plain text [element1, element2] format to a list so will do it manually
+    public List<String> parseCourses(String original){
+        char[] arr = original.toCharArray();
+        List<String> courses = new ArrayList<>();
+
+        //Goes through the array of characters adding each character to a new string
+        //When the charcter on current index is is '['  ']' ',' or ' ' the character is not added to the temporary string
+        //as those characters have been saved as a result of directly writing the list of string to file
+        //When current index is equal to ',' the temp string is added into the courses list and then emptied
+        //so reading of next course in original can begin
+        String course = "";
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] == ','){
+                courses.add(course);
+                course = "";
+            }else if(arr[i] != '[' && arr[i] != ']' && arr[i] != ' '){
+                course = course + arr[i];
+            }
+        }
+        courses.add(course); //finally adding last course because there is no , after last element so loop above would not add it
+        return courses;
+    }
+
 
     /*-------------------- READ METHODS ------------------ */
     //Pull data from the text file, and add to students/courses variable, each student/course has x rows of information (students = 5, onlinecourses = 6, classroomcourses = 8)
@@ -103,9 +127,7 @@ public class FileService {
                 int age = Integer.parseInt(sc.nextLine());
                 String id = sc.nextLine();
                 int credits = Integer.parseInt(sc.nextLine());
-                String courseString = sc.nextLine();
-                List<String> courses = new ArrayList<>();
-                courses.add(courseString);
+                List<String> courses = parseCourses(sc.nextLine()); //parsecourses method used here
                 stud = new Student(name, age, credits);
                 stud.setCourses(courses);
                 stud.setStudentId(id);

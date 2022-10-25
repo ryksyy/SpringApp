@@ -18,12 +18,14 @@ public class CourseService {
     FileService fService;
 
     public OnlineCourse addOnlineCourse(OnlineCourse cData){
+        readFromFile();
         oCourses.add(cData);
         fService.writeOnline(oCourses);
         return cData;
     }
 
     public ClassCourse addClassCourse(ClassCourse cData){
+        readFromFile();
         cCourses.add(cData);
         fService.writeClass(cCourses);
         return cData;
@@ -39,7 +41,13 @@ public class CourseService {
         return cCourses;
     }
 
+    private void readFromFile(){
+        cCourses = fService.readClass();
+        oCourses =fService.readOnline();
+    }
+
     public int existsbyId(String courseId){
+        readFromFile();
         for (ClassCourse classCourse : cCourses) {
             if(classCourse.getCourseId().equals(courseId)){
                 return 1;
@@ -54,6 +62,7 @@ public class CourseService {
     }
 
     public OnlineCourse searchOnlineById(String courseId){
+        readFromFile();
         for (OnlineCourse onlineCourse : oCourses) {
             if(onlineCourse.getCourseId().equals(courseId))
                 return onlineCourse;
@@ -62,6 +71,7 @@ public class CourseService {
     }
 
     public ClassCourse searchClassById(String courseId){
+        readFromFile();
         for (ClassCourse classCourse : cCourses) {
             if(classCourse.getCourseId().equals(courseId))
                 return classCourse;

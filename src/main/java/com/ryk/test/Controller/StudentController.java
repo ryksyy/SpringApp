@@ -1,16 +1,17 @@
 package com.ryk.test.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ryk.test.Services.CourseService;
 import com.ryk.test.Services.StudentService;
 import com.ryk.test.data.Student;
 
@@ -20,8 +21,9 @@ public class StudentController {
     @Autowired
     StudentService sService;
 
+    //Needed for enrolling students to a course
     @Autowired 
-    CourseController cService;
+    CourseService cService;
 
     @GetMapping("getStudents")
     public List<Student> getStudents() {
@@ -50,8 +52,21 @@ public class StudentController {
         }
     }
 
-    @PutMapping("enroll")
-    public String enrollStudent(@RequestBody String studentId, @RequestBody String courseId){
-        return "Succesfully added " + sService.getStudentById(studentId).getName() + "to course ";
+    @PostMapping("enroll")
+    public String enrollStudent(@RequestBody Map<String, String> json){
+        String studentId = json.get("studentId");
+        String courseId = json.get("courseId");
+        if(sService.getStudentById(studentId) == null)
+            return "No such student p";
+        if(cService.existsbyId(courseId) == 0)
+            return "No such course";
+
+        if(cService.existsbyId(courseId) == 1 || cService.existsbyId(courseId) == 2){
+            return sService.enrollStudent(studentId, courseId);
+        }else{
+            return "Error adding student to course, check you request body";
+        }    
     }
+
+
 }
