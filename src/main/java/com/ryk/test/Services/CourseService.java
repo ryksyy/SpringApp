@@ -38,4 +38,35 @@ public class CourseService {
         cCourses = fService.readClass();
         return cCourses;
     }
+
+    public int existsbyId(String courseId){
+        for (ClassCourse classCourse : cCourses) {
+            if(classCourse.getCourseId().equals(courseId)){
+                return 1;
+            }
+        }
+        for(OnlineCourse onlineCourse : oCourses){
+            if(onlineCourse.getCourseId().equals(courseId)){
+                return 2;
+            }
+        }
+        return 0;
+    }
+
+    public OnlineCourse searchOnlineById(String courseId){
+        for (OnlineCourse onlineCourse : oCourses) {
+            if(onlineCourse.getCourseId().equals(courseId))
+                return onlineCourse;
+        }
+        return null;
+    }
+
+    public ClassCourse searchClassById(String courseId){
+        for (ClassCourse classCourse : cCourses) {
+            if(classCourse.getCourseId().equals(courseId))
+                return classCourse;
+        }
+        return null;
+    }
+
 }

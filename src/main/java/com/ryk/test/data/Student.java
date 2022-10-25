@@ -17,8 +17,6 @@ public class Student {
         this.age = age;
         this.credits = credits;
         this.studentId = (age + name + "id");
-        this.courses.add("haha lol");
-        this.courses.add("xdxdxd");
     }
 
     public String getName() {

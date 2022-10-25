@@ -1,9 +1,7 @@
 package com.ryk.test.Services;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -38,7 +36,7 @@ public class FileService {
             fw.write(student.getCourses() + System.lineSeparator());
         }
         fw.close();
-        }catch(IOException e){
+        }catch(Exception e){
             System.out.println("Error writing students: " + e);
         }
     }
@@ -55,7 +53,7 @@ public class FileService {
             fw.write(onlineCourse.getRecordingLink() + System.lineSeparator());
         }
         fw.close();
-        }catch(IOException e){
+        }catch(Exception e){
             System.out.println("Error writing onlinecourses: " + e);
         }
     }
@@ -74,7 +72,7 @@ public class FileService {
             fw.write(classCourse.getClassLenght() + System.lineSeparator());
         }
         fw.close();
-        }catch(IOException e){
+        }catch(Exception e){
             System.out.println("Error writing classCourses: " + e);
         }
     }
@@ -117,7 +115,7 @@ public class FileService {
         
         sc.close();
         return students;
-        }catch(FileNotFoundException e){
+        }catch(Exception e){
             System.out.println("Error reading students: " + e);
             return null;
         }
@@ -154,7 +152,7 @@ public class FileService {
             }
             sc.close();
             return onCourses;
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.out.println("Error: " + e);
             return null;
         }
@@ -193,9 +191,22 @@ public class FileService {
             }
             sc.close();
             return claCourses;
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.out.println("Error: " + e);
             return null;
+        }
+    }
+
+    public void dropAllData(){
+        File oC = new File("./text/onlinecourses.txt");
+        File cC = new File("./text/classcourses.txt");
+        File s = new File("./text/students.txt");
+        try{
+        new FileWriter(oC, false).close();
+        new FileWriter(cC, false).close();
+        new FileWriter(s, false).close();
+        }catch(Exception exception){
+            System.out.println(exception);
         }
     }
 }

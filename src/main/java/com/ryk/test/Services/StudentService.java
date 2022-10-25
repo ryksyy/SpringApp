@@ -29,4 +29,29 @@ public class StudentService {
         return students;
     }
 
+    public void dropAllData(){
+        fService.dropAllData();
+    }
+
+    public Student getStudentById(String id){    
+            for (Student student : students) {
+                if(student.getStudentId().equals(id)){
+                    return student;
+                }
+            }   
+        return null;     
+    }
+
+    public Student enrollStudent(String studentId, String courseId){
+        for (Student student : students) {
+            if(student.getStudentId().equals(studentId)){
+                student.addCourse(courseId);
+            }
+        }
+
+
+
+        return new Student(courseId, 0, 0);
+    }
+
 }

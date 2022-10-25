@@ -1,32 +1,16 @@
 5
-Java Ohj
-c5-Java Ohj
+Java Ohjaus
+c5-Java Ohjaus
 Matti Väärynen
 12B
 Tiistai
 12:30
 2.5
-5
-Java Ohj
-c5-Java Ohj
+1
+Math
+c1-Math
 Matti Väärynen
 12B
-Tiistai
-12:30
-2.5
-5
-Java Ohj
-c5-Java Ohj
-Matti Väärynen
-12B
-Tiistai
-12:30
-2.5
-5
-Java Ohj
-c5-Java Ohj
-Matti Väärynen
-12B
-Tiistai
+Torstai
 12:30
 2.5
