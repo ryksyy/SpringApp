@@ -25,8 +25,8 @@ public class FileService {
     
 
     /*-------------------- WRITE METHODS ------------------ */
-    //These are passed the server side, saved in memory lists of courses and they write that data directly to a file
-    //To avoid overwriting already written data the services call the read methods on start up to catch up to what is already in the files
+    //These are passed the server side, saved in memory lists of courses/students and they write that data directly to a file
+    //To avoid overwriting already written data the services call the read methods on startup to catch up to what is already in the files
     public void writeStudents(List<Student> students){
         try{
         FileWriter fw = new FileWriter(new File("./text/students.txt"));
@@ -81,9 +81,10 @@ public class FileService {
 
 
     /*-------------------- READ METHODS ------------------ */
-    //Pull data from the text file, and add to students var, each student has 5rows of information
-    //so dividing row amount by 5 will return how many students are saved
-    //which allows us to gather each individual student information and saving it before moving to the next one
+    //Pull data from the text file, and add to students/courses variable, each student/course has x rows of information (students = 5, onlinecourses = 6, classroomcourses = 8)
+    //so dividing row amount by x will return how many students/courses are saved
+    //which allows us to gather each individual student/course information and saving it to a list before moving to the next one
+    //and eventually returning the completed list
     //similar logic will be used to implement course reading
     public List<Student> readStudents() {
         try{
@@ -118,6 +119,82 @@ public class FileService {
         return students;
         }catch(FileNotFoundException e){
             System.out.println("Error reading students: " + e);
+            return null;
+        }
+    }
+
+    public List<OnlineCourse> readOnline(){
+        try {
+            Scanner sc = new Scanner(new File("./text/onlinecourses.txt"));
+            List<OnlineCourse> onCourses = new ArrayList<>();
+            int rows = 0;
+            while(sc.hasNextLine()){
+                rows++;
+                sc.nextLine();
+            }
+            sc = new Scanner(new File("./text/onlinecourses.txt"));
+            
+            rows = rows / 6;
+            if(rows > 0){
+                for(int i = 0; i < rows; i++){
+                    OnlineCourse oCourse;
+                    int cred = Integer.parseInt(sc.nextLine());
+                    String cName = sc.nextLine();
+                    String cId = sc.nextLine();
+                    String tName = sc.nextLine();
+                    String zoomL = sc.nextLine();
+                    String recL = sc.nextLine();
+                    oCourse = new OnlineCourse(zoomL, recL);
+                    oCourse.setCourseCred(cred);
+                    oCourse.setCourseName(cName);
+                    oCourse.setCourseId(cId);
+                    oCourse.setTeacher(tName);
+                    onCourses.add(oCourse);
+                }
+            }
+            sc.close();
+            return onCourses;
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
+    }
+
+    public List<ClassCourse> readClass(){
+        try {
+            Scanner sc = new Scanner(new File("./text/classcourses.txt"));
+            List<ClassCourse> claCourses = new ArrayList<>();
+            int rows = 0;
+            while(sc.hasNextLine()){
+                rows++;
+                sc.nextLine();
+            }
+            sc = new Scanner(new File("./text/classcourses.txt"));
+            
+            rows = rows / 8;
+            if(rows > 0){
+                for(int i = 0; i < rows; i++){
+                    ClassCourse cCourse;
+                    int cred = Integer.parseInt(sc.nextLine());
+                    String cName = sc.nextLine();
+                    String cId = sc.nextLine();
+                    String tName = sc.nextLine();
+                    String cRoom = sc.nextLine();
+                    String day = sc.nextLine();
+                    String time = sc.nextLine();
+                    double lenght = Double.parseDouble(sc.nextLine());
+                    cCourse = new ClassCourse(cRoom, day, time, lenght);
+                    cCourse.setCourseCred(cred);
+                    cCourse.setCourseName(cName);
+                    cCourse.setCourseId(cId);
+                    cCourse.setTeacher(tName);
+                    claCourses.add(cCourse);
+                }
+            }
+            sc.close();
+            return claCourses;
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: " + e);
             return null;
         }
     }

@@ -1,7 +1,10 @@
 package com.ryk.test.Controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +18,16 @@ public class CourseController {
 
     @Autowired
     CourseService cService;
+
+    @GetMapping("getOnlineCourses")
+    public List<OnlineCourse> getOnlineCourses(){
+        return cService.getOnline();
+    }
+
+    @GetMapping("getClassRoomCourses")
+    public List<ClassCourse> getClassRoom(){
+        return cService.getClasses();
+    }
 
     @PostMapping("addOnlineCourse")
     public OnlineCourse addOnlineCourse(@RequestBody OnlineCourse onlineCourse){

@@ -28,4 +28,14 @@ public class CourseService {
         fService.writeClass(cCourses);
         return cData;
     }
+
+    public List<OnlineCourse> getOnline(){
+        oCourses = fService.readOnline();
+        return oCourses;
+    }
+
+    public List<ClassCourse> getClasses(){
+        cCourses = fService.readClass();
+        return cCourses;
+    }
 }
