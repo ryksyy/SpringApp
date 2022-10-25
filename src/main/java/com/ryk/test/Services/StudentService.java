@@ -44,6 +44,7 @@ public class StudentService {
         return null;     
     }
 
+    //Finds student by id and adds passed courseId to the list of their courses
     public String enrollStudent(String studentId, String courseId){
         getStudents();
         for(int i = 0; i < students.size(); i++){

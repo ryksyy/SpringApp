@@ -6,6 +6,7 @@ public class ClassCourse extends Course{
     private String startTime = "";
     private double classLenght = 0.0; //in hours
 
+    //child of Course, has information only relevant to itself
 
     public ClassCourse(String classRoom, String weekDay, String startTime, double classLenght) {
         this.classRoom = classRoom;

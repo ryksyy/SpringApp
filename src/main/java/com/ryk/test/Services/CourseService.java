@@ -17,6 +17,10 @@ public class CourseService {
     @Autowired
     FileService fService;
 
+    //Commits course data to memory for manipulation
+    //Most functions start by reading data saved to the course text files and are fairly self explanatory
+    //Add functions save added courses to text file and memory immediately
+
     public OnlineCourse addOnlineCourse(OnlineCourse cData){
         readFromFile();
         oCourses.add(cData);
@@ -46,6 +50,9 @@ public class CourseService {
         oCourses =fService.readOnline();
     }
 
+    //Checks if a course exists in either file
+    //Returns a number so further methods utilizing this know to use 
+    //online or class constructor
     public int existsbyId(String courseId){
         readFromFile();
         for (ClassCourse classCourse : cCourses) {

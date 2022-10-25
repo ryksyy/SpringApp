@@ -4,6 +4,7 @@ public class OnlineCourse extends Course{
     private String zoomLink = "";
     private String recordingLink = "";
 
+    //child of Course, has information only relevant to itself
     public OnlineCourse(String zoomLink, String recordingLink) {
         this.zoomLink = zoomLink;
         this.recordingLink = recordingLink;

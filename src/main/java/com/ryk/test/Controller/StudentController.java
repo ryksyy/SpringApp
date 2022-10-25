@@ -54,13 +54,17 @@ public class StudentController {
 
     @PostMapping("enroll")
     public String enrollStudent(@RequestBody Map<String, String> json){
+        //Spring needs to use Map to use requestbody elements as params effectively
         String studentId = json.get("studentId");
         String courseId = json.get("courseId");
+
+        //Validates ids passed in body
         if(sService.getStudentById(studentId) == null)
             return "No such student p";
         if(cService.existsbyId(courseId) == 0)
             return "No such course";
 
+        //Adds student to the course and performs a final check that the course exists and prevents funky errors
         if(cService.existsbyId(courseId) == 1 || cService.existsbyId(courseId) == 2){
             return sService.enrollStudent(studentId, courseId);
         }else{

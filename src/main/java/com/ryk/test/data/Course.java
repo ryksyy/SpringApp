@@ -1,6 +1,8 @@
 package com.ryk.test.data;
 
 public class Course {
+    //parent class used for OnlineCourse and ClassCourse
+    //contains basic information and id generation
     protected int courseCred = 0;
     protected String courseName = "";
     protected String courseId = "";

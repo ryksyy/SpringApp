@@ -97,7 +97,8 @@ public class FileService {
                 course = course + arr[i];
             }
         }
-        courses.add(course); //finally adding last course because there is no , after last element so loop above would not add it
+        if(!course.equals(""))
+            courses.add(course); //adds last object if there are many courses, there is no ',' before last one so this is needed as loop above would otherwise not add it, additionally course has to have content otherwise this writes a blank element if student doesnt have any courses
         return courses;
     }
 
