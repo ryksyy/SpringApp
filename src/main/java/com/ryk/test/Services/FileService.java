@@ -103,6 +103,14 @@ public class FileService {
     }
 
 
+    //In hindsight it would have made way more sense to also write variable name such as "teacher:data" into  the text files
+    //and create an universal read/write methods for reading a single variable at a time returning row data and row index
+    //such as public List<String> readSingle(String var, String id)
+    //return index, id, value, type
+    //but this works well enough in a project this small scale as it doesnt need to add new fields to data models
+    //problem with this way is that both the model and the fileService need to be updated if a new field would be added
+
+
     /*-------------------- READ METHODS ------------------ */
     //Pull data from the text file, and add to students/courses variable, each student/course has x rows of information (students = 5, onlinecourses = 6, classroomcourses = 8)
     //so dividing row amount by x will return how many students/courses are saved

@@ -7,14 +7,14 @@ Joona
 15
 15Joonaid
 20
-[]
+[c3-Math]
 Matti
 45
 45Mattiid
 140
-[]
+[c3-Math, c1-Math]
 Teppo
 45
 45Teppoid
 140
-[c5-JavaOhjaus, c3-Math, c1-Math, c5-Java Ohjelmointi]
+[c5-JavaOhjaus, c3-Math, c1-Math, c5-JavaOhjelmointi]

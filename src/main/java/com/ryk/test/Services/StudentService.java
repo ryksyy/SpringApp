@@ -30,6 +30,26 @@ public class StudentService {
         return students;
     }
 
+
+    //goes through all students and checks if they have courses
+    //if they have courses it goes through all their courses checking if one matches passed id(student has course ids saved)
+    //if student has a course with given id it adds that student to a new student list
+    //After it returns all studdents who match the criteria, or an empty array in case none do
+    public List<Student> getStudentsOnCourse(String id){
+        getStudents();
+        List<Student> studs = new ArrayList<>();
+        for (Student student : students) {
+            if(!student.getCourses().isEmpty()){
+                for (String s : student.getCourses()) {
+                    if(s.equals(id)){
+                        studs.add(student);
+                    }
+                }
+            }
+        }
+        return studs;
+    }
+
     public void dropAllData(){
         fService.dropAllData();
     }

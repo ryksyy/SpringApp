@@ -20,6 +20,8 @@ public class CourseController {
     @Autowired
     CourseService cService;
 
+
+
     @GetMapping("getOnlineCourses")
     public List<OnlineCourse> getOnlineCourses(){
         return cService.getOnline();

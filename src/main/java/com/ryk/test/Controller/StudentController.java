@@ -30,7 +30,12 @@ public class StudentController {
         return sService.getStudents();
     }
 
-    @DeleteMapping("dropAllData") //empties all 3 files, mainly for debugging purposes
+    @GetMapping("getStudentsOn")
+    public List<Student> getStudentsOn(@RequestParam String id){
+        return sService.getStudentsOnCourse(id);
+    }
+
+    @DeleteMapping("dropAllData") //empties all 3 files, mainly for debugging purposes,definitely would add authentication or remove this if this was "going into prod"
     public void dropAllData(){
         sService.dropAllData();
     }
