@@ -30,6 +30,11 @@ public class StudentService {
         return students;
     }
 
+    public List<String> getStudentsCourses(String id){
+        Student studs = getStudentById(id);
+        return studs.getCourses();
+    }
+
 
     //goes through all students and checks if they have courses
     //if they have courses it goes through all their courses checking if one matches passed id(student has course ids saved)

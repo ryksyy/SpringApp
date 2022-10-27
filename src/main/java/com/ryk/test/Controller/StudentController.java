@@ -30,9 +30,28 @@ public class StudentController {
         return sService.getStudents();
     }
 
+    @GetMapping("getStudentsCourses")
+    public String getStudentsCourses(@RequestParam String id){
+        String res = "";
+        List<String> courses = sService.getStudentsCourses(id);
+        for (String string : courses) {
+            res += string + ", ";
+        }
+        return res +  "Student is on " + courses.size() + " courses";
+    }
+
     @GetMapping("getStudentsOn")
-    public List<Student> getStudentsOn(@RequestParam String id){
-        return sService.getStudentsOnCourse(id);
+    public String getStudentsOn(@RequestParam String id){
+        String res = "";
+        if(sService.getStudentsOnCourse(id) == null)
+            return "No Students on that course";
+        
+        List<Student> tempStuds = sService.getStudentsOnCourse(id);
+        for (Student stud : tempStuds) {
+            res += stud.getName() + ", ";
+        }
+
+        return res + tempStuds.size() + " students on course " + id;
     }
 
     @DeleteMapping("dropAllData") //empties all 3 files, mainly for debugging purposes,definitely would add authentication or remove this if this was "going into prod"
