@@ -1,6 +1,6 @@
 5
 Java Ohjelmointi
-c5-Java Ohjelmointi
+c5-JavaOhjelmointi
 Matti Väärynen
 http://zoomlink.fi/matti
 http://youtube.com/thisalink
@@ -11,8 +11,3 @@ Donal Duck
 http://zoomlink.fi/donalds
 http://youtube.com/mcdonaldsmixtape
 5
-webohj
-c5-webohj
-pertti
-asdasdasd
-qweeqweqweqwe

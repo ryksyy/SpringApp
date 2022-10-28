@@ -10,6 +10,7 @@ public class Course {
 
     protected void createId(){
         this.courseId = "c" + this.courseCred + "-" + this.courseName;
+        this.courseId.replaceAll("\\s+","");
     }
 
     public int getCourseCred() {
