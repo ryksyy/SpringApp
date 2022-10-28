@@ -2,12 +2,12 @@ Kimmo
 22
 22Kimmoid
 45
-[]
+[c3-Math, c1-Math, c3-Math]
 Joona
 15
 15Joonaid
 20
-[c3-Math, c1-Math]
+[c3-Math, c1-Math, c1-Math]
 Matti
 45
 45Mattiid
@@ -18,3 +18,13 @@ Teppo
 45Teppoid
 140
 [c5-JavaOhjaus, c3-Math, c1-Math, c5-JavaOhjelmointi]
+Teuvo
+50
+50Teuvoid
+12
+[]
+Keepo
+2222
+2222Keepoid
+2
+[]

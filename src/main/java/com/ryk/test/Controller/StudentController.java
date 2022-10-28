@@ -34,6 +34,8 @@ public class StudentController {
     public String getStudentsCourses(@RequestParam String id){
         String res = "";
         List<String> courses = sService.getStudentsCourses(id);
+        if(courses == null)
+            return "Invalid course id";
         for (String string : courses) {
             res += string + ", ";
         }
@@ -43,6 +45,10 @@ public class StudentController {
     @GetMapping("getStudentsOn")
     public String getStudentsOn(@RequestParam String id){
         String res = "";
+
+        if(sService.getStudentsOnCourse(id).size() < 1)
+            return "Invalid course id";
+
         if(sService.getStudentsOnCourse(id) == null)
             return "No Students on that course";
         
@@ -81,7 +87,6 @@ public class StudentController {
         //Spring needs to use Map to use requestbody elements as params effectively
         String studentId = json.get("studentId");
         String courseId = json.get("courseId");
-
         //Validates ids passed in body
         if(sService.getStudentById(studentId) == null)
             return "No such student p";

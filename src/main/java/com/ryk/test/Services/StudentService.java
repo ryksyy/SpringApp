@@ -31,6 +31,8 @@ public class StudentService {
     }
 
     public List<String> getStudentsCourses(String id){
+        if(getStudentById(id) == null)
+            return null;
         Student studs = getStudentById(id);
         return studs.getCourses();
     }

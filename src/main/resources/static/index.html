@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control panel</title>
+    <script type="text/javascript" src="requesthandler.js" defer></script>
+</head>
+<body>
+    <h3>This is the control panel for [undefined] school</h3>
+    <h2>In case these methods dont work try using chrome as firefox had issues for me and the fetch command
+    <br>Using something like thunderclient or postman to test will result in cool responses
+    <br>There is a thunderclient collection included inside of the repo</h2>
+    <ul>
+        <li><a href ="/getStudents" target="_blank">Get all students</a></li>
+        <li><a href ="/getClassRoomCourses" target="_blank">Get all in person classes</a></li>
+        <li><a href ="/getOnlineCourses" target="_blank">Get all online courses</a></li>
+        <li>Search courses info by ID: <input id="courseByID" type="text"><button onclick="courseByID()">Search</button></li>
+        <li>Search student info by ID: <input id="studentByID" type="text"><button onclick="studentByID()">Search</button></li>
+        <li>Get students on a course with course ID: <input id="studentsByID" type="text"><button onclick="studentsByID()">Search</button></li>
+        <li>Get all courses a student is on with student ID: <input id="studentCour" type="text"><button onclick="studentCour()">Search</button></li>
+    </ul>
+
+    <h1>POST METHODS</h1>
+    <p>these look better in thunder client but you can use the text files to verify they work</p>
+    <h3>Enroll a student</h3>
+    <form>
+        <label>Student ID:</label><br>
+        <input id="enrollStud" type="text" name="studentId"><br>
+        <label>Course ID:</label><br>
+        <input id="enrollCour" type="text" name="courseId"><br>
+        <button onclick="enroll()">Enroll Student</button>
+    </form>
+    <h3>Create new student</h3>
+    <form>
+        <label>Student name:</label><br>
+        <input id="newSn" type="text" name="name"><br>
+        <label>Student Age:</label><br>
+        <input id="newSa" type="text" name="age"><br>
+        <label>Student Credits:</label><br>
+        <input id="newSc" type="text" name="credits"><br>
+        <button onclick="addStudent()">Create Student</button>
+    </form>
+    <h3>Create a new online course</h3>
+    <form>
+        <label>Course credits:</label><br>
+        <input id="ocourseCred" type="text" name="ocourseCred"><br>
+        <label>Course name:</label><br>
+        <input id="ocourseName" type="text" name="ocourseName"><br>
+        <label>Teacher name:</label><br>
+        <input id="oteacher" type="text" name="oteacher"><br>
+        <label>Zoom Link:</label><br>
+        <input id="zoom" type="text" name="zoom"><br>
+        <label>Recordins Link:</label><br>
+        <input id="recordingLink" type="text" name="recordingLink"><br>
+        <button onclick="createOnline()">Create course</button>
+    </form>
+    <h3>Create a new classroom course</h3>
+    <form>
+        <label>Course credits:</label><br>
+        <input id="courseCred" type="text" name="courseCred"><br>
+        <label>Course name:</label><br>
+        <input id="courseName" type="text" name="courseName"><br>
+        <label>Teacher name:</label><br>
+        <input id="teacher" type="text" name="teacher"><br>
+        <label>Classroom:</label><br>
+        <input id="room" type="text" name="room"><br>
+        <label>Day of the week:</label><br>
+        <input id="day" type="text" name="weekday"><br>
+        <label>Starting time:</label><br>
+        <input id="time" type="text" name="time"><br>
+        <label>Class Lenght:</label><br>
+        <input id="len" type="text" name="len"><br>
+        <button onclick="createRoom()">Create course</button>
+    </form>
+
+
+
+    <p id="respA">you can verify that these work by looking at the text files</p>
+    
+</body>
+</html>
