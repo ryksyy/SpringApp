@@ -39,13 +39,13 @@
         <label>Student Age:</label><br>
         <input id="newSa" type="text" name="age"><br>
         <label>Student Credits:</label><br>
-        <input id="newSc" type="text" name="credits"><br>
+        <input id="newSc" type="number" name="credits"><br>
         <button onclick="addStudent()">Create Student</button>
     </form>
     <h3>Create a new online course</h3>
     <form>
         <label>Course credits:</label><br>
-        <input id="ocourseCred" type="text" name="ocourseCred"><br>
+        <input id="ocourseCred" type="number" name="ocourseCred"><br>
         <label>Course name:</label><br>
         <input id="ocourseName" type="text" name="ocourseName"><br>
         <label>Teacher name:</label><br>
@@ -59,7 +59,7 @@
     <h3>Create a new classroom course</h3>
     <form>
         <label>Course credits:</label><br>
-        <input id="courseCred" type="text" name="courseCred"><br>
+        <input id="courseCred" type="number" name="courseCred"><br>
         <label>Course name:</label><br>
         <input id="courseName" type="text" name="courseName"><br>
         <label>Teacher name:</label><br>
@@ -69,9 +69,9 @@
         <label>Day of the week:</label><br>
         <input id="day" type="text" name="weekday"><br>
         <label>Starting time:</label><br>
-        <input id="time" type="text" name="time"><br>
+        <input id="time" type="text" name="time">String<br>
         <label>Class Lenght:</label><br>
-        <input id="len" type="text" name="len"><br>
+        <input id="len" type="number" name="len" step="0.5"><br>
         <button onclick="createRoom()">Create course</button>
     </form>
 
